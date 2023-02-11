@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 // home page
 app.get('/', (req, res) => {
-  res.render('chat', cfg);
+  res.render('chat', cfg)
 })
 
 // static assets

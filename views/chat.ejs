@@ -34,8 +34,9 @@
     window.cfg = {
       wsPort: '<%= wsPort %>',
       nameLen: '<%= nameLen %>',
-      chatStory: '<%= chatStory %>'
+      chatStory: '[<%= chatStory %>]'.replaceAll('&#34;','"')
     };
+
   </script>
   <script type="module" src="main.js"></script>
 </body>
