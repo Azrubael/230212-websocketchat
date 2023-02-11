@@ -8,7 +8,8 @@ const cfg = {
   port:     process.env.PORT || 3000,
   wsPort:   process.env.WSPORT || 3001,
   nameLen:  15,
-  msgLen:   200
+  msgLen:   200,
+  chatStory: []
 }
 
 // Express server
@@ -53,6 +54,7 @@ ws.on('connection', (socket, req) => {
     ws.clients.forEach(client => {
       client.readyState === WebSocket.OPEN && client.send(msg, { binary })
     })
+    saveChatStory(msg)
   })
 
   // closed
@@ -61,3 +63,8 @@ ws.on('connection', (socket, req) => {
   })
 
 })
+
+function saveChatStory(message) {
+  cfg.chatStory.push(message)
+  if (cfg.chatStory.length > 12) cfg.chatStory.shift()
+}
