@@ -7,8 +7,7 @@ dom.name.value = decodeURIComponent(location.search.trim().slice(1,1 + window.cf
 
 let clearChat = document.getElementById('clearchat')
 let currentStory = JSON.parse(window.cfg.chatStory)
-console.log(currentStory, '\n', typeof currentStory)
-
+// console.log(currentStory, '\n', typeof currentStory)
 
 wsInit(`ws://${ location.hostname }:${ window.cfg.wsPort }`);
 
@@ -19,7 +18,6 @@ function wsInit(wsServer) {
 
   // connect to server
   ws.addEventListener('open', () => {
-/*
     for (let i = 0; i < currentStory.length; i++) {
       let
         name = document.createElement('div'),
@@ -32,7 +30,6 @@ function wsInit(wsServer) {
       msg.textContent = (currentStory[i].msg || 'said nothing')
       dom.chat.appendChild(msg).scrollIntoView({ behavior: 'smooth' })
     }
-*/
       sendMessage('entered the chat room')
   })
 
